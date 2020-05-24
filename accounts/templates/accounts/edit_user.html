@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}edit info{% endblock %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <h4>{{ message }}</h4>
+    {% endfor %}
+{% endif %}
+<div>
+    <h2>edit {{ request.user.username }}'s info</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" value="edit info">
+    </form>
+</div>
+{% endblock %}
